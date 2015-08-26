@@ -1,0 +1,68 @@
+
+<%= render :partial => 'main/navbar' %>
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="row" style="padding-top:20px;">
+            <b><%= render :partial => 'board_header' %></b>
+            
+            <div class="well well-out">
+                <div class="well well-in" style="padding:30px;padding-top:15px;padding-left:40px;">
+                    <div class="row">
+                        <h3><b><%= @post.post_title %></b></h3>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <%= @post.post_content %>
+                    </div>
+                </div>
+                <div class="well well-in">
+                    <% @comment.each do |x| %>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="comment" align="center">
+                                    <%= x.comment_user_name %>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="comment" align="center">
+                                    <%= x.comment_content %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                    <div class="row">
+                        <form action="/board/comment/<%= @post.id %>" method="POST">
+                            <input type="hidden" name="board_id" value="<%= @board.id %>">
+                            <input type="hidden" name="user_id" value="<%= @user_id %>">
+                            
+                            <div class="col-md-11 col-xs-10">
+                                <input type="text" name="content" class="form-control" placeholer="내용 입력">
+                            </div>
+                            <div class="col-md-1 col-xs-2">
+                                <input class="btn btn-primary" type="submit" value="등록">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            
+                <div class="row" align="right">
+                    <a class="btn btn-orange" href="/board/delete/<%= @post.id %>">삭제</a>
+                    <a class="btn btn-orange" href="/board/modify/<%= @post.id %>">수정</a>
+                    <a class="btn btn-orange" href="/board/index?board_name=<%= @board_name %>&page=<%= @page %>">목록</a>
+                
+                </div>
+            
+            
+            </div>
+        </div>
+
+    </div>
+	<div class="col-md-1"></div>
+</div>
+
+
+<%= render :partial => 'style/board' %>
+
+

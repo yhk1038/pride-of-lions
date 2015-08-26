@@ -1,0 +1,74 @@
+            <div class="well well-out">
+                <%#= form_for @sb, url: {controller: 'admin', action:'add_sb'} do |f| %>
+                <form action="/admin/m_b/<%= @b.id %>" method="POST">
+                    <input type="hidden" name="mod" value="<%= @mod %>">
+                    <input type="hidden" name="id" value="<%= @b.id %>">
+                    <div class="well well-in">
+                        <div class="form-group2">
+                            <label>게시판 이름(변수)</label>
+                            <input type="text" name="board_name" class="form-control" value="<%= @b.board_name %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>게시판 제목</label>
+                            <input type="text" name="title" class="form-control" value="<%= @b.title %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>게시판 부제목(설명)</label>
+                            <input type="text" name="content" class="form-control" value="<%= @b.content %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>level(읽기)</label>
+                            <input type="text" name="level_read" class="form-control" value="<%= @b.level_read %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>level(쓰기)</label>
+                            <input type="text" name="level_write" class="form-control" value="<%= @b.level_write %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>level(댓글)</label>
+                            <input type="text" name="level_comment" class="form-control" value="<%= @b.level_comment %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>level(목록보기)</label>
+                            <input type="text" name="level_list" class="form-control" value="<%= @b.level_list %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>level(삭제)</label>
+                            <input type="text" name="level_delete" class="form-control" value="<%= @b.level_delete %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>level(수정)</label>
+                            <input type="text" name="level_modify" class="form-control" value="<%= @b.level_modify %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>level(관리자)</label>
+                            <input type="text" name="level_admin" class="form-control" value="<%= @b.level_modify %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>flag 일단 생략</label>
+                            <input type="text" name="flag" class="form-control" value="<%= @b.flag %>" require>
+                        </div>
+                    </div>
+                
+                    <div class="row" align="right">
+                        <% if @mod == "1" %>
+                            <a class="btn btn-orange" href="/admin/del_b?id=<%= @b.id %>">삭제</a>
+                            <input type="submit" value="수정" class="btn btn-orange" />
+                        <% else %>
+                            <input type="submit" value="등록" class="btn btn-orange" />
+                        <% end %>
+                        <a class="btn btn-orange" href="/admin/index?admin=board">취소</a>
+                    </div>
+                </form>
+                
+            
+            
+            </div>
+        </div>
+        
+    	<div class="row">
+    		<hr class="feature-divider">
+    	</div>
+    </div>
+	<div class="col-md-1"></div>
+</div>

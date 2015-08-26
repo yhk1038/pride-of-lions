@@ -1,0 +1,33 @@
+
+<%= render :partial => 'navbar' %>
+
+<!--카로셀-->
+<div class="row">
+	<%= render :partial => 'carousel' %>
+	<div class="col-md-9">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+			
+				<%= render :partial => 'sampleboard' %>
+			
+			</div>
+
+		<div class="row">
+			<hr class="featurette-divider">
+		</div>
+		<div class="col-md-1"></div>
+
+		</div>
+	</div>
+
+	<div class="col-md-3 sidewidget" align="center">
+		<!-------------------------------------------------//카로셀 우측 하단에 로그인 및 개인 유저 전용 위젯-->
+		<%= render :partial => 'sidewidget' %>
+	</div>
+	<div class="row">
+		<hr class="featurette-divider">
+	</div>
+</div>
+
+<%= render :partial => 'style/index' %>

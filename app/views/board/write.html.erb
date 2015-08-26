@@ -1,0 +1,44 @@
+<%= render :partial => '/main/navbar' %>
+
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="row" style="padding-top:20px;">
+            <%= render :partial => 'board_header' %>
+            
+            <div class="well well-out">
+                
+                <form action="/board/writing" method="POST">
+                    <div class="well well-in">
+                    
+                        <input type="hidden" value="<%= @board.id %>" name="board_id">
+                        <input type="hidden" value="<%= @user_id %>" name="user_id">
+                        <div class="form-group">
+                            <input type="text" name="title" class="form-control" placeholder="제목을 입력하세요.">
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea rows="13" name="content" class="form-control" style="margin-top:12px; width:100%;"placeholder="내용을 입력하세요."></textarea><br>
+                        </div>
+                    </div>
+                
+                    <div class="row" align="right">
+                        <input type="submit" value="등록" class="btn btn-orange" />
+                        <a class="btn btn-orange" href="/board/index?board_name=<%= @board_name %>&page=<%= @page %>">취소</a>
+                    </div>
+                </form>
+                
+            
+            
+            </div>
+        </div>
+        
+    	<div class="row">
+    		<hr class="feature-divider">
+    	</div>
+    </div>
+	<div class="col-md-1"></div>
+</div>
+
+<%= render :partial => 'style/board' %>

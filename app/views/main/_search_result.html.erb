@@ -1,0 +1,46 @@
+<%# r_user = Array.new %>
+
+<table style="width:100%;padding:10px;border:1px solid black;text-align:center;">
+    <thead>
+        <tr>
+            <td>찾은곳</td>
+            <td>찾은내용</td>
+            <td>ㅁㅁ</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% User.all.each do |x| %>
+            <%# if x.user_name.include?(@word.to_s) %>
+            <% if x.user_name.include?(@word) %>
+                <tr>
+                    <td>User</td>
+                    <td><%= x.user_name %></td>
+                    <td><%= @word %></td>
+                </tr>
+            <% else %>
+                <tr>
+                    <td>User</td>
+                    <td><%= x.user_name %></td>
+                    <td>잘못된 검색이거나 검색된 결과가 없습니다.</td>
+                </tr>
+            <% end %>
+        <% end %>
+        <% Post.all.each do |x| %>
+            <%# if x.user_name.include?(@word.to_s) %>
+            <% if x.post_content.include?(@word) %>
+                <tr>
+                    <td>Post - content</td>
+                    <td><%= x.post_content %></td>
+                    <td><%= @word %></td>
+                </tr>
+            <% end %>
+            <% if x.post_title.include?(@word) %>
+                <tr>
+                    <td>Post - title</td>
+                    <td><%= x.post_title %></td>
+                    <td><%= @word %></td>
+                </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,231 @@
+
+<!-- url = http://temp-yhk1038.c9.io/home/look_portfolio3 <= 확인할때 복붙하셈 -->
+
+<%= render :partial => 'navbar' %>
+
+<div class="upper_contents">
+  <div class="row" style="margin:0 auto;">
+    <div class="col-md-8 nav_underneath">
+      <div class="pf_upper_text" style="padding-left:15px; padding-top:20px;">
+        <h1><b>포트폴리오 구경하기</b></h1>
+        <p>다른 사람들이 올린 웹을 구경하고 자신의 웹을 등록할 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="input-group" style="padding-top:50px; float:right;">
+        <span class="input-group-addon" id="sizing-addon2">검색</span>
+        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
+      </div>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-default" type="submit" style="margin-top:50px; float:left;">글쓰기</button>
+    </div>    
+  </div>
+</div>
+
+
+<div class="pf_under_space"style="height:30px;"></div>
+
+<!------컨텐츠------->
+<style>
+  .black_font{
+    color:black;
+  }
+</style>
+
+<div class="contents_row1">
+  <div class="row" style="margin:0 auto;">
+  <% if @b_prj.any? %>
+    <% @b_prj.each do |x| %>
+    <% u = User.find(x.user_id) %>
+    <div class="col-md-4">
+      <div class="thumbnail"><!--381*238로 리사이징-->
+        <a href="/main/each_project/<%= x.id %>"><img src="<%= x.myprj_each_img.url %>" width="592px" height="370px" style="margin:10px 0px 10px 0px;"/></a>
+        <div class="caption">      
+          <div class="label_name">
+            <a href="/main/each_project/<%= x.id %>"><h3 class="black_font"><b><%= x.prj_title %></b></h3></a><p style="margin-top:-30px;text-align:right;"><b><%= u.user_name %></b></p>            
+          <a href="/main/each_project/<%= x.id %>"><p class="black_font"><%= x.prj_memo %></p></a><!--내용 글자수 제한 3줄로-->
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-2">
+                <p style="text-align:center; cursor:pointer;" id="like"><b>Like : 0 </b></p>
+                  <input type="hidden" name="" value="0" id="like_N">
+              </div>
+              <div class="col-md-2">
+                <p style="text-align:center;"><b>Re :N</b></p>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <%end%>
+  <% else %>
+    <div class="col-md-4">
+      <div class="thumbnail"><!--381*238로 리사이징-->
+        <img src="../img/img_none.png">
+        <div class="caption">      
+          <div class="label_name">
+            <h3><b>모두의 라이언</b></h3><p style="margin-top:-30px;text-align:right;"><b>글쓴이</b></p>            
+          <p>포트폴리오 관리 사이트입니다~~ 글 하나씩 써보고 가세요! 포트폴리오 관리를 통해서 팀매칭을 보다 손쉽게 할 수 있습니다!</p><!--내용 글자수 제한 3줄로-->
+          <p style="text-align:center;"><b>Like : N<%# 좋아요 누른 사람 수 %>&nbsp;&nbsp;|&nbsp;&nbsp;Re : N<%# 리플의 개수 %></b></p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  <% end %>  
+    <div class="col-md-4">
+      <div class="thumbnail"><!--381*238로 리사이징-->
+        <img src="../img/img_none.png">
+        <div class="caption">      
+          <div class="label_name">
+            <h3><b>제목제목제목제목제목제목제<!--글자수제한 13자--></b></h3><p style="margin-top:-30px;text-align:right;"><b>글쓴이</b></p>            
+          <p>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내</p><!--내용 글자수 제한 3줄에 75자-->
+          <p style="text-align:center;"><b>Like : N<%# 좋아요 누른 사람 수 %>&nbsp;&nbsp;|&nbsp;&nbsp;Re : N<%# 리플의 개수 %></b></p>
+          </div> 
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="thumbnail"><!--381*238로 리사이징-->
+        <img src="../img/img_none.png">
+        <div class="caption">      
+          <div class="label_name">
+            <h3><b>제목제목제목제목제목제목제<!--글자수제한 13자--></b></h3><p style="margin-top:-30px;text-align:right;"><b>글쓴이</b></p>            
+          <p>포트폴리오 관리 사이트입니다~~ 글 하나씩 써보고 가세요! 포트폴리오 관리를 통해서 팀매칭을 보다 손쉽게 할 수 있습니다!</p><!--내용 글자수 제한 3줄로-->
+          <p style="text-align:center;"><b>Like : N<%# 좋아요 누른 사람 수 %>&nbsp;&nbsp;|&nbsp;&nbsp;Re : N<%# 리플의 개수 %></b></p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="contents_row2">
+  <div class="row" style="margin:0 auto;">
+    <div class="col-md-4">
+      <div class="thumbnail"><!--381*238로 리사이징-->
+        <img src="../img/img_none.png">
+        <div class="caption">      
+          <div class="label_name">
+            <h3><b>모두의 라이언</b></h3><p style="margin-top:-30px;text-align:right;"><b>글쓴이</b></p>            
+          <p>포트폴리오 관리 사이트입니다~~ 글 하나씩 써보고 가세요! 포트폴리오 관리를 통해서 팀매칭을 보다 손쉽게 할 수 있습니다!</p><!--내용 글자수 제한 3줄로-->
+          <p style="text-align:center;"><b>Like : N<%# 좋아요 누른 사람 수 %>&nbsp;&nbsp;|&nbsp;&nbsp;Re : N<%# 리플의 개수 %></b></p>
+          </div> 
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="thumbnail"><!--381*238로 리사이징-->
+        <img src="../img/img_none.png">
+        <div class="caption">      
+          <div class="label_name">
+            <h3><b>제목제목제목제목제목제목제<!--글자수제한 13자--></b></h3><p style="margin-top:-30px;text-align:right;"><b>글쓴이</b></p>            
+          <p>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내</p><!--내용 글자수 제한 3줄에 75자-->
+          <p style="text-align:center;"><b>Like : N<%# 좋아요 누른 사람 수 %>&nbsp;&nbsp;|&nbsp;&nbsp;Re : N<%# 리플의 개수 %></b></p>
+          </div> 
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="thumbnail"><!--381*238로 리사이징-->
+        <img src="../img/img_none.png">
+        <div class="caption">      
+          <div class="label_name">
+            <h3><b>제목제목제목제목제목제목제<!--글자수제한 13자--></b></h3><p style="margin-top:-30px;text-align:right;"><b>글쓴이</b></p>            
+          <p>포트폴리오 관리 사이트입니다~~ 글 하나씩 써보고 가세요! 포트폴리오 관리를 통해서 팀매칭을 보다 손쉽게 할 수 있습니다!</p><!--내용 글자수 제한 3줄로-->
+          <p style="text-align:center;"><b>Like : N<%# 좋아요 누른 사람 수 %>&nbsp;&nbsp;|&nbsp;&nbsp;Re : N<%# 리플의 개수 %></b></p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--페이지 리스트-->
+<div class="page_list_nav">
+  <div class="row" style="margin:0 auto;">
+    <div class="col-md-12">
+      <center>
+        <nav>
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </center>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <%#</div>
+</div>%>
+
+
+<!------삭제예정------>
+<%#<hr class="featurette-divider">
+<div class="bottom_container">
+  <div class="row">
+    <div class="col-lg-4 "><!--여기엔 뭐가 들어가는거냐 : -->
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <img src="https://scontent.xx.fbcdn.net/hphotos-xfp1/t31.0-8/11885006_809318652518532_6052253703622523142_o.jpg" style="margin-left:5%;" width="90%"/>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+    
+    <div class="col-lg-7">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <p class="panel-title"><b>모두의 라이언</b></p><div style="float:right; font-size:15px; margin-top:-24px;">등록일:2015.08.20</div>
+        </div>
+        <div class="panel-body">
+          <b>자신의 멋쟁이사자처럼의 일정과 강의 정리 및 숙제 그리고 웹까지. 이제 개인적인 공간에 등록해두세요. 
+          당신은 자신의 정보를 오픈하여 모두에게 피드백을 받을 수 있습니다. 
+          자신이 원하는 만큼 공개, 비공개 처리가 가능하며 이 방식은 팀매칭에도 보다 효과적입니다. 
+          포트폴리오를 관리하면서 자신이 가진 능력을 남들에게 어필할 수 있을 뿐만 아니라 
+          프로젝트를 구상할 때 스스로 다른 사람의 공개된 포트폴리오를 탐색하여 알맞는 팀원을 찾을 수 있습니다.</b>
+        </div>
+        <p><b><a href="#" style="color:#f39f19; font-size:17px; margin-left:3%;">설명 더 보기</a></b></p><br>
+        <p style="margin-bottom:15px;"><b><a href="#" style="color:#000; font-size:17px; margin-left:3%;">팀 구하기</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="#" style="color:#000; font-size:17px;">아이디어톤에 등록하기</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="#" style="color:#000; font-size:17px;">게시판에 등록하기</a></b></p>
+        <div></div>
+      </div>
+    </div>
+    
+    <div class="col-lg-1"></div>
+  </div>
+</div>%>
+<!--//여기까지 반복문---->
+
+<%= render :partial => 'style/look' %>
+<%= render :partial => 'js/look' %>

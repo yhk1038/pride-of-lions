@@ -1,0 +1,98 @@
+                
+project = MyprjEach.create( user_id = 2,
+                            myprj_each_img = "",
+                            prj_title = "모두의라이언ct3",
+                            prj_memo = "모두의라이언 시드 project1",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 3
+                )
+project = MyprjEach.create( user_id = 2,
+                            myprj_each_img = "",
+                            prj_title = "아이디어톤ct3",
+                            prj_memo = "모두의라이언 시드 project2",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 3
+                )
+project = MyprjEach.create( user_id = 2,
+                            myprj_each_img = "",
+                            prj_title = "모두의라이언ct1",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 1
+                )
+project = MyprjEach.create( user_id = 2,
+                            myprj_each_img = "",
+                            prj_title = "모두의라이언ct1",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 1
+                )
+project = MyprjEach.create( user_id = 2,
+                            myprj_each_img = "",
+                            prj_title = "모두의라이언ct2",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 2
+                )
+project = MyprjEach.create( user_id = 2,
+                            myprj_each_img = "",
+                            prj_title = "모두의라이언ct2",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 2
+                )
+                
+project = MyprjEach.create( user_id = 1,
+                            myprj_each_img = "",
+                            prj_title = "/모두의라이언ct1",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 1
+                )
+project = MyprjEach.create( user_id = 1,
+                            myprj_each_img = "",
+                            prj_title = "/모두의라이언ct1",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 1
+                )
+project = MyprjEach.create( user_id = 1,
+                            myprj_each_img = "",
+                            prj_title = "/모두의라이언ct2",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 2
+                )
+project = MyprjEach.create( user_id = 1,
+                            myprj_each_img = "",
+                            prj_title = "/모두의라이언ct2",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 2
+                )
+project = MyprjEach.create( user_id = 1,
+                            myprj_each_img = "",
+                            prj_title = "/모두의라이언ct3",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 3
+                )
+project = MyprjEach.create( user_id = 1,
+                            myprj_each_img = "",
+                            prj_title = "/모두의라이언ct3",
+                            prj_memo = "모두의라이언 시드 project",
+                            prj_content = "가나다라마바사아자차카타파하고노도로모보소오조초코토포호구누두루무부수우주추쿠투푸후거너더러머버서어저처커터퍼허",
+                            prj_url = "http://pride-of-lions-yhk1038-1.c9.io/",
+                            prj_ctgory = 3
+                )

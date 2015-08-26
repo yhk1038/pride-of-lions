@@ -1,0 +1,16 @@
+            <div class="well well-head">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p style="font-size:20px;"><%= @board.title %></p>
+                    </div>
+                    <div class="col-md-4">
+                        <form action="" method="POST" class="form-group2">
+                            <input type="text" name="search_word" placeholder="검색할 내용을 입력하세요." class="form-control input-text">
+                            <input type="submit" value="검색" class="btn-orange btn">
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <p><%= @board.content %></p>
+                </div>
+            </div>

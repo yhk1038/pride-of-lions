@@ -1,0 +1,41 @@
+<script>
+    $(function() {
+        //like를 클릭하면
+        $("#like").click(
+            //Something Events happen!!
+            function(){
+                //기존에 N에 표시된 숫자를 받아서/ 1을 더하고 그 결과를 N으로 리턴한다.
+                var joayo = $("#like_N").val();
+                var j_integer = parseInt(joayo) + 1
+                    joayo = j_integer;
+                //리턴된 N을 출력한다.
+                
+                $("#like").replaceWith('<p style="text-align:center; cursor:pointer;" id="like"><b>Like : ' + joayo + '</b></p>');
+                $("#like_N").val(joayo);
+                //alert(joayo);
+                
+                //$.ajax({
+                //    data: $("#like_N").val(),
+                //    url: "/main/look_portfolio"
+                //    });
+            }
+            );
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</script>

@@ -1,0 +1,37 @@
+<%= render :partial => 'main/navbar' %>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" align="center">
+        <div class="panel-heading">
+            <h2>Login</h2>
+        </div>
+        <div class="panel-body">
+            <%= form_for @user, url: {action: 'login_confirm'} do |f| %>
+            <div class="form-group">
+                <%= f.label :"이메일" %>
+                <%= f.email_field :user_email, autofocus: true, class: "form-control" %>
+              </div>
+            <div class="form-group">
+                <%= f.label :"비밀번호" %>
+                <%= f.password_field :user_password, autofocus: true, class: "form-control" %>
+            </div>
+            <div class="row" style="padding-right:13px;">
+              <p>
+                <div class="col-md-10">
+                  <%= @error_message %>
+                </div>
+                <div class="col-md-2">
+                  <%= f.submit "로그인", class: "btn btn-primary" %>
+                </div>
+              </p>
+            </div>
+            <% end %>
+            
+        	<div class="row" align="center">
+        		<hr class="feature-divider">
+        	</div>
+        </div>
+    </div>
+	<div class="col-md-4"></div>
+</div>

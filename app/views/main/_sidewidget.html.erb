@@ -1,0 +1,86 @@
+<style>
+	.form-control{
+		width:100%
+	}
+
+</style>
+
+<%= render :partial => 'style/index' %>
+
+<% @user = User.new %>
+		<!-- Blog Login Well -->
+		<div class="well">
+			<% unless @current_user.nil? %>
+				<img class="img-circle" src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10982311_798024560314608_5938658506473307123_n.jpg?oh=d842567d1d2764c4b402bc168c92ae0a&oe=5653F8F2&__gda__=1446631832_5159274637d0054726e049c96c33603c" alt="Generic placeholder image" width="140" height="140">
+				<br><b><%= @current_user.user_name %> 님 환영합니다 !</b>
+				<a href="/user/logout" class="btn btn-default" type="button" style="background-color:#f49f19"/><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a>
+			<% else %>
+				<div class="input-group">
+					<h3>Please Login...</h3>
+					<img class="img-circle" src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10982311_798024560314608_5938658506473307123_n.jpg?oh=d842567d1d2764c4b402bc168c92ae0a&oe=5653F8F2&__gda__=1446631832_5159274637d0054726e049c96c33603c" alt="Generic placeholder image" width="140" height="140">
+					<br>ClassLion의 계정을 사용할 수 있습니다!
+					<%= form_for @user, url: {controller: 'user', action: 'login_confirm'} do |f| %>
+						<div class="row" align="left">
+							<%= f.label :"이메일" %>
+							<%= f.email_field :user_email, autofocus: false, class: "form-control", placeholer: "E-mail" %>
+						</div>
+						<div class="row" align="left">
+						<%#<div class="form-group">%>
+							<%= f.label :"비밀번호" %>
+							<%= f.password_field :user_password, autofocus: false, class: "form-control", placeholer:"Password" %>
+						</div>
+						<p align="left"><%= f.submit "로그인", class: "btn btn-primary" %></p>
+						<p data-toggle="modal" data-target="#join" class="btn btn-default" type="button" /><span class="glyphicon glyphicon-log-out"></span> 가입하기</p>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<!-- Search Well -->
+		<div class="well">
+			<!--h4>Search</h4-->
+			<div class="row">
+				<form action="/main/search" method="POST">
+					<div class="col-md-8 col-sm-7 col-xs-12">
+						<input type="text" name="word" class="form-control">
+					</div>
+					<div class="col-md-4 col-sm-5 col-xs-12">
+						<input type="submit" class="btn btn-default" value='Search'/>
+					</div>
+				</form>
+			</div>
+			<!-- /.input-group -->
+		</div>
+
+		<!-- Categories Well -->
+		<div class="well">
+			<h4>Categories</h4>
+			<div class="row">
+				<div class="col-lg-6">
+					<ul class="list-unstyled">
+						<li><a href="/user_msg/index" style="color:black;">쪽지함</a>
+						</li>
+						<li><a href="#" style="color:black;">프로젝트 스크랩</a>
+						</li>
+						<li><a href="#" style="color:black;">내가 쓴 글</a>
+						</li>
+						<li><a href="#" style="color:black;">회원정보 수정</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.col-lg-6 -->
+				<div class="col-lg-6">
+					<ul class="list-unstyled">
+						<li><a href="/user_msg/write_" style="color:black;">쪽지 보내기</a>
+						</li>
+						<li><a href="#" style="color:black;">게시글 스크랩</a>
+						</li>
+						<li><a href="#" style="color:black;">내 친구 목록</a>
+						</li>
+						<li><a href="#" style="color:black;">로그아웃</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.col-lg-6 -->
+			</div>
+			<!-- /.row -->
+		</div>

@@ -1,0 +1,232 @@
+<!--//// 네비바 -->
+<%= render :partial => 'navbar' %>
+
+<!--////  네비바 바로 아래 row 시작  -->
+<div class="upper_content_x">
+  <div class="row" style="margin:0 auto;">
+  
+    <div class="col-md-6">
+      <div class="upeer_pf_text" style="padding-left:15px; padding-top:20px;">
+      <h1><b><%= @current_user.user_name %>님의 포트폴리오</b></h1>
+      <p>내가 만든 포트폴리오를 통해 자기소개를 해보세요.</p>
+      
+      <!--<div class="sogea">
+        <div class="row" style="padding-bottom:30px;">  
+          <div class="col-md-4">
+            <center style="font-size:15px"><b>간단한 자기소개를 해보세요. </b>(100자 이내) <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></center>
+          </div>    
+          <div class="col-md-8"></div>
+        </div>
+      </div>-->
+      </div>
+    </div>
+    <!-------------------------------------//폴더 선택하기 기능------------------------------------------구현 끝-->
+    <div class="col-md-3">    
+      <div class="select_fold" style="padding-top:40px; float:right;">
+          <div class="input-group">
+                <div class="btn-group" role="menu">
+                    <form action="/main/my_portfolio/" method="GET">
+                        <select name="category" id="category" title="카테고리">
+                  				<option value="0" selected="selected">----- 선택한 폴더만 보기 -----</option>
+                  				<option value="0">전체보기</option>
+                  				<option value="1">수업과제</option>
+                  				<option value="2">내 프로젝트</option>
+                  				<option value="3">팀 프로젝트</option>
+                  				<option value="4">기타</option>
+                      		</select>
+                      		<strong><input type="submit" value="열기" style="margin-left: -4px;"></strong>
+                    </form>
+                </div>
+            </div>
+      </div>
+    </div>
+    <!-------------------------------------//검색하기 기능 (현재 화면에 떠있는 prj중에서만!)-------------구현 예정-->
+    <div class="col-md-3">
+      <div class="input-group" style="padding-top:40px; float:left; width:250px;">
+        
+        <input type="text" class="form-control" aria-describedby="sizing-addon2">
+        <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<style>
+/* style of My_portfolio page (written by RyuJinee) */
+.input-group .form-control:first-child {height: 40px;
+                                        background-color: #ccc;}
+.input-group-addon {font-size: 20px;
+                    color:white;
+                    background-color: rgba(253, 106, 19, 0.9);
+                    border-radius:0px;
+                    border-color: rgba(253, 106, 19, 0.9);}
+.button, select {
+    text-transform: none;
+    width: 205px;
+    height: 41px;
+    background-color: #ccc;
+    }
+
+.button, html input[type=button], input[type=reset], input[type=submit] {
+    height: 41px;
+    width: 45px;
+    background-color: rgba(253, 106, 19, 0.9);
+    color:white;
+    font-size: 15px;
+    }
+.form-control {border-radius:0px;}
+    
+</style>
+
+<!--//// 네비바 바로 아래 row 종료 -->
+
+<!--//// -->
+<div class="middle_container">
+  <div class="row">
+    <!--// 여기엔 +가 들어간 흰상자 이미지 ==> 클릭하면 모달로 입력받게 합시다..... 는 나중에 ------------구현 예정-->
+    <div class="col-lg-4 adding_box">
+      <a href="/main/add_portfolio"><img src="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/11825144_809305542519843_6839928587401733457_n.jpg?oh=f06514a112c981e72dec1fe6530062e3&oe=564CF1E2&__gda__=1447431019_7e90316f426803709d8f8e73937173db" style="margin-left:5%; margin-top:5%;" width="90%" height="100%"/></a>
+    </div>
+    
+    <div class="col-lg-7" style="margin: 5% 0% 7% 0%;">
+      <center class="pf_lead_message"><b>왼쪽에 있는 더하기 상자로 자신의 웹을 등록하고 포트폴리오를 채워<br>모두와 공유해보세요.</b></center>
+    </div>
+  </div>
+</div>
+
+
+
+  
+  <hr style="border:solid 1px #E0E0E0; width:98%;"></hr>
+
+  <div class="bottom_container">
+    <!------/조건문------>
+    <% if @each_myprj.empty? %>
+    <!----만약 정의된 **each_myprj**가 **[비어있으면]** 아래를 출력하고----->
+      <div class="row" style="margin:5px; auto;">
+    
+        <div class="col-md-4">
+          <div class="panel panel-default" style="float:left; width:100%; height:240px; text-align:center;">
+            <div class="panel-body">
+              이미지가 없습니다.
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-8">
+          <div class="panel panel-default" style="float:right; width:100%;">
+              <div class="panel-heading" style="height:43px;">
+                <h3 class="panel-title" style="float:left;"><b>모두의 라이언</b></h3>
+                <div style="float:right; font-size:13px; padding-left:20px;">등록일:2015.08.20</div>
+                <div style="float:right; font-size:13px; padding-left:20px;"><a href="#" style="color:#000;"><b>수정</b></a></div>
+                <div style="float:right; font-size:13px;"><a href="#_" style="color:#000;"><b>삭제</b></a></div>
+              </div>
+              <div class="panel-body" style="font-size:13px;">
+                자신의 멋쟁이사자처럼의 일정과 강의 정리 및 숙제 그리고 웹까지. 이제 개인적인 공간에 등록해두세요. 
+                여러분은 자신의 정보를 오픈하여 모두에게 피드백을 받을 수 있습니다. 
+                자신이 원하는 만큼 공개, 비공개 처리가 가능하며 이 방식은 팀매칭에도 보다 효과적입니다. 
+                포트폴리오를 관리하면서 자신이 가진 능력을 남들에게 어필할 수 있을 뿐만 아니라 
+                프로젝트를 구상할 때 스스로 다른 사람의 공개된 포트폴리오를 탐색하여 알맞는 팀원을 찾을 수 있습니다.<!--글자수 보여주는거 제한 필요-->
+                <p><b><a href="#" style="color:#f39f19;">설명 더 보기</a></b></p>
+              </div>
+           </div>       
+        </div>
+      </div>
+    
+    <% else %>
+    <!----만약 정의된 **each_myprj**가 **[존재하면]** 아래를 출력해라----->
+      <!--/반복문 시작-->
+      <% @each_myprj.each do |x| %>
+      <div class="row" style="margin:5px; auto;">
+        <div class="col-md-4">
+          <div class="panel panel-default" style="float:left; width:100%; height:240px; text-align:center;">
+            <img src="<%= x.myprj_each_img.url %>"/>
+          </div>
+        </div>
+        
+        <div class="col-md-8">
+          <div class="panel panel-default" style="float:right; width:100%;">
+              <div class="panel-heading" style="height:43px;">
+                <h3 class="panel-title" style="float:left;"><b><%= x.prj_title %></b></h3>
+                <div style="float:right; font-size:13px; padding-left:20px;">마지막 수정일:<%= x.updated_at %></div>
+                <div style="float:right; font-size:13px; padding-left:20px;"><a href="/main/prj_modify/<%=x.id%>" style="color:#000;"><b>수정</b></a></div>
+                <div style="float:right; font-size:13px;"><a href="/main/prj_delete/<%=x.id%>" style="color:#000;"><b>삭제</b></a></div>
+              </div>
+              <div class="panel-body" style="font-size:13px;">
+                <!--글자수 보여주는거 제한 필요-->
+                <%= x.prj_content %>
+                <p><b><a href="/main/each_project/<%=x.id%>" style="color:#f39f19;">설명 더 보기</a> | <a href="<%= x.prj_url%>">프로젝트 실행하기</a></b></p>
+<!--폴더 변경하기 입력받게 구현하자-----------바로아랫부분부터-------------->  
+
+
+                <div class="btn-group" role="menu">
+                    <form action="/main/add_portfolio?confirm=3&id=<%=x.id%>" method="POST">
+                            <select name="category" id="category" title="카테고리" style="width:auto; height:30px;">
+                  				<option value="0" selected="selected"> 폴더 바꾸기 </option>
+                  				<option value="0">폴더없음</option>
+                  				<option value="1">수업과제</option>
+                  				<option value="2">내 프로젝트</option>
+                  				<option value="3">팀 프로젝트</option>
+                  				<option value="4">기타</option>
+                      		</select>
+                      		<input type="submit" value="변경!" style="background-color:#f49f19; width:auto; height:30px; margin-left: -4px;">
+                    </form>
+                </div>
+                
+                <div>
+                  <% if x.lookable == 0 %>
+                    <p>이 프로젝트는 공개되지 않았습니다</p>
+                    <button type="button" class="btn btn-default">
+                      <a href="/main/add_portfolio?confirm=4&id=<%=x.id%>" method="POST">공개 하기</a>
+                    </button>
+                  <% elsif x.lookable == 1 %>
+                    <p>공개되어있는 프로젝트입니다</p>
+                    <button type="button" class="btn btn-default">
+                      <a href="/main/add_portfolio?confirm=5&id=<%=x.id%>" method="POST">공개 안하기</a>
+                    </button>
+                  <% else %>
+                    <p>공개 여부를 설정해주세요</p>
+                    <button type="button" class="btn btn-default">
+                      <a href="/main/add_portfolio?confirm=4&id=<%=x.id%>" method="POST">공개 하기</a>
+                    </button>
+                    <button type="button" class="btn btn-default">
+                      <a href="/main/add_portfolio?confirm=5&id=<%=x.id%>" method="POST">공개 안하기</a>
+                    </button>
+                  <% end %>
+                </div>
+                  <!--  <div class="col-md-3">    
+                          <div class="select_fold" style="padding-top:40px; float:right;">
+                              <div class="input-group">
+                                    <div class="btn-group" role="menu">
+                                        <form action="/main/my_portfolio/" method="GET">
+                                            <select name="category" id="category" title="카테고리">
+                                      				<option value="0" selected="selected">----- 선택한 폴더만 보기 -----</option>
+                                      				<option value="0">전체보기</option>
+                                      				<option value="1">수업과제</option>
+                                      				<option value="2">내 프로젝트</option>
+                                      				<option value="3">팀 프로젝트</option>
+                                          		</select>
+                                          		<strong><input type="submit" value="열기" style="margin-left: -4px;"></strong>
+                                        </form>
+                                    </div>
+                                </div>
+                          </div>
+                        </div>-->
+                  
+                  
+<!---------------------------------------------여기까지/--------------------->
+              </div>
+           </div>       
+        </div>
+      </div>
+      <% end %>
+      <!--반복문 종료-->
+    <% end %>
+    <!--여기까지 조건문/---->
+  </div>
+</div>
+
+
+<%= render :partial => 'style/my' %>

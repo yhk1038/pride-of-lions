@@ -1,0 +1,82 @@
+<% @user=User.new %>
+
+<div class="row first_nav_row">
+ <ul class="first_nav">
+   <li class="col-md-9 col-xs-9 col-sm-9">&nbsp</li>
+   <% unless session[:user_id].nil? %>
+       <a href="/user_msg/index"><li class="col-md-1" style="text-align:right;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span></li></a>
+       <a href="/user/logout"><li class="col-md-1" style="text-align:center;"><strong>로그아웃</strong></li></a>
+       <a href=""><li class="col-md-1"><strong>MY PAGE</strong></li></a>
+   <% else %>
+       <li class="col-md-1"></li>
+       <li class="col-md-1" style="text-align:center;"  data-toggle="modal" data-target="#login"><strong style="cursor:pointer;">로그인</strong></li>
+       <li class="col-md-1" data-toggle="modal" data-target="#join"><strong style="cursor:pointer;">가입하기</strong></li>
+   <% end %>
+ </ul>
+</div>
+<style>
+.first_nav li {
+    list-style-type:none;
+    float:left;
+    color:white;
+    font-size: 18px;
+}
+.first_nav_row {
+    background-color:#5F5D5D;
+    height:33px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+</style>
+
+
+<nav class="upper_navbar_2 navbar navbar-collapse collapse">
+  <div class="row" align="center" style="height:75px;">
+    <div class="col-md-1 col-xs-1 col-sm-1 logoimg">
+      <img src="/img/uhung.png" >
+    </div>
+    
+    <div class="col-md-3 col-xs-11 col-sm-4 col-lg-2">
+      <div class="logo_text" style="text-align:left;">
+        <a href="/">모두의 라이언</a>
+      </div>
+    </div>
+    
+    <% 1.upto(Navbar.count) do |k| %>
+        <% x = Navbar.where(:index => k).take %>
+            <div class="col-md-<%= x.md %> col-xs-<%= x.xs %> col-sm-<%= x.sm %> col-lg-<%= x.lg %> navbtn_mouseover <%= x.style_class %>">
+        <% if x.ltype == "link" %>
+            <p><a href="<%= x.url %>"><%= x.title %></a></p>
+            </div>
+        <% elsif x.ltype == "dropdown" %>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <p href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                      <% unless x.icon.nil? %>
+                          <span class="glyphicon <%= x.icon %>" aria-hidden="true"></span>
+                      <% end %>
+                      <%= x.title %><span class="caret"></span>
+                  </p>
+                  <ul class="dropdown-menu" role="menu">
+                      <% x.menus.each do |y|
+                            if y.ltype == "header" %>
+                                 <li class="dropdown-header" style="text-align:center; padding-left: 0px;"><%= y.title %></li>
+                            <% elsif y.ltype == "link" %>
+                                <li><a href="<%= y.url %>" ><%= y.title %></a></li>
+                            <% elsif y.ltype == "divider" %>
+                                <li class="divider"></li>
+                            <% end %>
+                        <% end %>
+                  </ul>
+                </li>
+            </ul>
+            </div>
+        <% end %>
+    <% end %>
+    <div class="col-md-3 col-xs-2"></div>
+  </div>
+</nav>
+
+<%= render :partial => 'modal/modal_join' %>
+<%= render :partial => 'modal/modal_login' %>
+<%= render :partial => 'style/navbar' %>

@@ -1,0 +1,271 @@
+    <div style="height: 100px"></div>
+
+  <div class="container" style="    min-height: 500px;">
+      
+    <div class="row">
+    <a href="/article_board/main_board/?tab=random" >
+      <div class="col-md-4 col-sm-4 col-xs-4 " style="padding-right: 10px; padding-left:10px;">
+        <div id="option_nav"><span style="font-weight: 900;">?</span> 랜덤보기</div>
+      </div>
+    </a>
+    
+    <a href="/article_board/main_board/?tab=tag" >
+     <div class="col-md-4 col-sm-4 col-xs-4 " style="padding: 0px 10px 0px 10px;">
+       <div id="option_nav"><span style="font-weight: 900;">#</span> 태그검색</div>
+     </div>
+    </a>
+    
+    <a href="/article_board/main_board/?tab=likes">
+      <div class="col-md-4 col-sm-4 col-xs-4 "style="padding-right: 10px; padding-left:10px;">
+        <div id="option_nav"><span style="font-weight: 900;">⌘</span> 투표후보</div>
+      </div>
+    </a>
+  </div>
+  <% puser = @p.user_id %>
+  <% u = User.find(puser) %>
+  <%# User.find(@p.user_id).user_email %>
+  <div class="col-md-12" style="height:auto;; text-align:center; border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; background-color: #e5e5e5; margin:30px 0px 0px 0px;"> 
+    <div style="padding: 27px 0px 30px 0px;">
+          <span style="font-weight: 800; color:#727272; font-size: 120%;"><%= @p.prj_title %> |</span> 
+          <span style="font-weight: 500;color:#b2b2b2; font-size: 120%;">&nbsp;프로젝트 상세페이지입니다</span>
+        </div>
+        </div>
+        
+        
+     <div class="col-md-8 col-md-offset-2 col-sm-12 co-xs-12" style="height: auto;">
+     <div class="form-style-10" style="padding-top: 50px;">
+       
+       <div class="row" style="text-align: center; padding:0px;">
+         <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2 col-sm-offset-2 col-sm-8" style="padding:0px;">
+         
+              <img style="border-radius: 20px; width: 100%; margin-bottom:10px;" src="<%= @p.myprj_each_img.url %>"/>    
+                 
+           <span style="color: #f99636; font-size: 25px; font-weight: 900; "> <%= @p.prj_title %> </span><br>
+           <span style="color: #717171; font-size: 15px; font-weight: 700;"><%= @p.prj_memo %></span>
+         
+         
+            <a href="<%= @p.prj_url %>" target="_blank">
+
+            <span style="color: #2F11DB; font-size: 13px; font-weight: 800; "><br><u style="color: #f3ac4d; text-decoration: none;" >샘플보기</u></span></a>
+            
+           
+      
+           
+           
+         </div>
+       </div>
+           
+         
+          <form style="margin-top: 50px">
+          
+            <!--  <div style="text-align: right;color: #cecece; font-size: 13px; font-weight: 500; padding-bottom: 10px; ">2015/08/18 12:16:56PM</div>  -->
+              
+              <div class="inner-wrap">
+              
+                  <label style="word-break:break-all"><span style="margin-bottom: 10px; font-weight: 900;">상세설명</span> 
+                      <div id="test">
+                          <div><%= @p.prj_content %></div>
+                      </div>
+                  </label>
+                  
+                  <label><span style="margin-bottom: 10px; font-weight: 900;">함께 만든 사람</span> 
+                    <div id="test2">
+                      <div><strong><%= u.user_name %> in <%= u.user_team %> at <%= u.user_univ %></strong>,
+                        구현아직안됨구현아직안됨
+                        구현아직안됨구현아직안됨
+                      </div>
+                    </div>
+                  </label>
+                  
+                  <label><span style="margin-bottom: 10px; font-weight: 900;">이메일</span> 
+                  <div id="test2"><div><%= u.user_email %></div></div></label>
+                  
+                  <label><span style="margin-bottom: 10px; font-weight: 900;">연락처</span> 
+                  <%# 연락처 공유 여부 체크가 "0"으로 되어있으면 연락처를 오픈하고%>
+                      <div id="test2"><div>010-0000-0000<%# u.user_phone%></div></div></label>
+                  <%# 그렇지 않으면 연락처 요청하기를 보여준다 %>
+                      <%#<div id="test2"><div>(쪽지)연락처 요청하기</div></div></label>%>
+             
+            
+          </form>
+          </div>
+          
+          <div style="text-align: center; margin-top: 40px;">
+              
+            <!-- 좋아요 버튼3 -->
+
+                    
+              <a href="/article_board/like_delete/57" type="submit"> 
+              <img  style="width:30px; padding-bottom: 10px;" src="/image/like.png">
+              &nbsp;<span style="font-weight: 800;">취소2</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            
+              <a href="/article_board/select_delete/57" type="submit">
+               <img style="width: 30px; padding-bottom: 10px;" src="/image/like.png">
+               &nbsp;<span style="font-weight: 800;"> 후보제외 </span></a>
+          
+          </div>
+
+            <div style="text-align: center; margin: 30px 0px 30px 0px;">
+              
+                   <a class="button-section"  href="/article_board/pw_chk_process_m/57">
+                    <input type="button" value="수정">                 
+                   </a>
+                   <a class="button-section"  href="/article_board/pw_chk_process_d/57">
+                    <input type="button" value="삭제">                 
+                   </a>
+                  <a class="button-section"  href="/article_board/main_board">
+                    <input type="button" value="목록">                 
+                   </a>
+
+              </div>
+              
+              
+              
+          <div class="inner-wrap" style="height: auto; padding-bottom: 70px;">       
+            
+            
+              <label style="margin:0px;"><span style="margin-bottom: 0px; font-weight: 900;">댓글</span> 
+              <div id="test3" style="padding:14px; margin:0px;">
+                          <!-- 댓글 --->
+                          <div class="panel-group" id="accordion255" role="tablist" aria-multiselectable="true" style="margin-bottom: 0;">
+                            <div >
+                              <div class="panel-heading" role="tab" id="heading255">
+                                <h4 class="panel-title">
+                                  <a role="button" data-toggle="collapse" data-parent="#accordion255" href="#collapse255" aria-expanded="false" aria-controls="collapseOne">
+                                    <span style="font-weight: 700; font-size: 15px;">박지연 :</span> <span style="font-weight: 500; font-size: 15px;">한번쯤 어 ? 했을 고민을 아이디어로 풀어내신 점에 우선 박수를 보냅니다! </span> &nbsp;&nbsp;
+                                  </a>
+                                  <span style="font-weight: 500; font-size: 12px; color: #EB9746; margin-bottom: 3px;">
+                                    <a data-toggle="collapse" href="#re_reply_write255" aria-expanded="false" aria-controls="re_reply_write255">답글</a>
+                                  </span>
+                                </h4>
+                              </div>
+                              <div id="re_reply_write255" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading255">
+                                <div class="panel-body" style="border: none;">
+                                
+                                  <form action="/article_board/re_reply_write" method="POST">
+                                   <input type="hidden" value="255" name="reply_id">
+                                     <div class="col-md-5" style="padding: 0px; margin:0px;"><input style="font-size: 13px; margin:0px;" placeholder="댓글을 입력해주세요"class="form-control"  type = "string" name="contents"></div>
+                                     <div class="col-md-1" style="padding: 0px; margin:0px;"><input  id="reply_button" type = "submit" value = "작성"></div>
+                                  </form>
+                                </div>
+                              </div>
+                              <div id="collapse255" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading255">
+                                <ul >
+                                    <li class="list-group-item">
+                                      <span style="font-weight: 800; color: gray;">ㄴ&nbsp;김용현</span> : <span style="font-weight: 500; color: gray;">ㅎㅎㅎ고맙습니다! 쉽지 않지만 꾸준히 잘 만들어서 모두에게 유용해졌으면 좋겠습니다!! &nbsp;&nbsp;</span>
+                                        <a href = "/article_board/re_reply_delete/216" >삭제</a>
+                                    </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                     <hr style="margin: 5px 0px 5px 0px;">
+                          <!-- 댓글 --->
+                          <div class="panel-group" id="accordion268" role="tablist" aria-multiselectable="true" style="margin-bottom: 0;">
+                            <div >
+                              <div class="panel-heading" role="tab" id="heading268">
+                                <h4 class="panel-title">
+                                  <a role="button" data-toggle="collapse" data-parent="#accordion268" href="#collapse268" aria-expanded="false" aria-controls="collapseOne">
+                                    <span style="font-weight: 700; font-size: 15px;">장석준 :</span> <span style="font-weight: 500; font-size: 15px;">좋은 아이디어네요! 잘 구현해주신다면 자주자주 이용하겠습니다!!</span> &nbsp;&nbsp;
+                                  </a>
+                                  <span style="font-weight: 500; font-size: 12px; color: #EB9746; margin-bottom: 3px;">
+                                    <a data-toggle="collapse" href="#re_reply_write268" aria-expanded="false" aria-controls="re_reply_write268">답글</a>
+                                  </span>
+                                </h4>
+                              </div>
+                              <div id="re_reply_write268" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading268">
+                                <div class="panel-body" style="border: none;">
+                                
+                                  <form action="/article_board/re_reply_write" method="POST">
+                                   <input type="hidden" value="268" name="reply_id">
+                                     <div class="col-md-5" style="padding: 0px; margin:0px;"><input style="font-size: 13px; margin:0px;" placeholder="댓글을 입력해주세요"class="form-control"  type = "string" name="contents"></div>
+                                     <div class="col-md-1" style="padding: 0px; margin:0px;"><input  id="reply_button" type = "submit" value = "작성"></div>
+                                  </form>
+                                </div>
+                              </div>
+                              <div id="collapse268" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading268">
+                                <ul >
+                                    <li class="list-group-item">
+                                      <span style="font-weight: 800; color: gray;">ㄴ&nbsp;김용현</span> : <span style="font-weight: 500; color: gray;">고맙습니다!!!! 멋쟁이 사자처럼이 정말 지속가능했으면 좋겠다는 생각으루 시작했는데 힘이 됩니다^^ &nbsp;&nbsp;</span>
+                                        <a href = "/article_board/re_reply_delete/217" >삭제</a>
+                                    </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                     <hr style="margin: 5px 0px 5px 0px;">
+            
+                                        
+                    
+
+              </div></label>
+              
+                                  <!-- 댓글 입력 -->     
+                    
+                        <!--로그인을 한 경우 -->
+                        <br><br>
+                            <form style="margin-top: -30px; margin-bottom: 30px;" action = "/article_board/write_reply/" method="POST">
+                                <input type = "hidden" name = "article_id" value = "57">
+                                
+                                <input type = "hidden" name = "email" value = "yhk1038@hanmail.net">
+                                <input type = "hidden" name = "username" value = "김용현">
+                                <div style="margin-bottom: 30px;">
+                                <div class="col-md-11" style="padding: 0px; margin:0px;"><input style="font-size: 13px; margin:0px;" placeholder="댓글을 입력해주세요"class="form-control"  type = "text" name="myreply"></div>
+                                <div class="col-md-1" style="padding: 0px; margin:0px;"><input  id="reply_button" type = "submit" value = "작성"></div>
+                                </div>
+                            </form>
+                        
+                        
+                      
+                        <!--로그인을 하지 않은 경우 -->
+                    
+                    
+
+            </div>
+            
+            
+            
+            
+     </div>
+    </div>
+     
+<!-- 본문 -->   
+
+
+      
+</div>
+
+<br>
+
+ 
+
+<div class="container" style="width:100%; margin-top: 50px; background-color: #2D2D2D; height: auto; color: #EB8E34;">
+  <div class="row" style="padding: 30px 0px 30px 0px; line-height: 30px;">
+    <div class="col-md-4 col-md-offset-0 col-xs-offset-2 col-sm-offset-2 col-xs-8 col-sm-8 " style="padding-bottom: 8px; text-align: center;">
+        <span style="font-weight: 800; text-align:center;"> LIKELION IDEATHON</span>
+          | Copyright @Likelion.net 2015
+    </div>
+    <div class="col-md-3 col-md-offset-5 col-xs-12 col-sm-12" style=" text-align: center;">
+     <a href="/main/main" >
+     <img style="width: 30px" src="/image/mutsa.png">&nbsp;&nbsp;<span style="font-weight: 900;">소개페이지 /</span>   </a>
+     <a href="/article_board/main_board"><span style="font-weight: 900;">참여페이지</span></a>
+     </div>
+  </div>
+  
+  </div>
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-66096049-2', 'auto');
+  ga('send', 'pageview');
+
+</script>

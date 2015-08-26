@@ -1,0 +1,50 @@
+<style>
+    .from-control{
+        background:transparent;
+        border:none;
+        
+    }
+    .panel-body{
+        background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+        border:none;
+        border-radius:100px;
+    }
+    .panel{
+        background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+        border:;
+        border-radius:100px;
+        padding-bottom : 30px;
+    }
+    .panel-heading{
+        border-radius:100px;
+        border:solid 1px black
+        
+    }
+
+
+</style>
+<%= render :partial => 'main/navbar' %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+            <div class="panel panel-default col-md-6 col-xs-12">
+                <div class="panel-heading">
+                    <h4>메시지보내기...★</h4>
+                </div>
+                <div class="panel-body">
+                    <form action="/user_msg/send_" method="POST">
+                        <div class="form-group">
+                            <label>받는 사람</label>
+                            <input type="text" name="to_user_id" autofocus="true" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>내용</label>
+                            <input type="text" name="msg_content" class="form-control">
+                        </div>
+                        <p align="right"><input type="submit" value="보내기" class="btn btn-primary"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

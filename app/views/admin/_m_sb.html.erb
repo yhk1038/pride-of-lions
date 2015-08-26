@@ -1,0 +1,55 @@
+            <div class="well well-out">
+                
+                <%#= form_for @sb, url: {controller: 'admin', action:'add_sb'} do |f| %>
+                <form action="/admin/m_sb/<%= @sb.id %>" method="POST">
+                    <input type="hidden" name="mod" value="<%= @mod %>">
+                    <input type="hidden" name="id" value="<%= @sb.id %>">
+                    <div class="well well-in">
+                        <div class="form-group2">
+                            <label>게시판 이름(변수)</label>
+                            <input type="text" name="name" class="form-control" value="<%= @sb.board_name %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>게시판 제목</label>
+                            <input type="text" name="title" class="form-control" value="<%= @sb.board_title %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>게시판 부제목(설명)</label>
+                            <input type="text" name="subtitle" class="form-control" value="<%= @sb.board_subtitle %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>게시판 최대 표시 문자길이</label>
+                            <input type="text" name="max_length" class="form-control" value="<%= @sb.max_length %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>게시판 레벨(보이게 할)</label>
+                            <input type="text" name="level" class="form-control" value="<%= @sb.level %>" require>
+                        </div>
+                        <div class="form-group2">
+                            <label>최대 게시글수 </label>
+                            <input type="text" name="board_post" class="form-control" value="<%= @sb.board_post %>" require>
+                        </div>
+                    </div>
+                
+                    <div class="row" align="right">
+                        <% if @mod == "1" %>
+                            <a class="btn btn-orange" href="/admin/del_sb?id=<%= @sb.id %>">삭제</a>
+                            <input type="submit" value="수정" class="btn btn-orange" />
+                        <% else %>
+                            <input type="submit" value="수정" class="btn btn-orange" />
+                        <% end %>
+                        <a class="btn btn-orange" href="/admin/index?admin=sampleboard">취소</a>
+                    </div>
+                </form>
+                
+            
+            
+            </div>
+        </div>
+        
+    	<div class="row">
+    		<hr class="feature-divider">
+    	</div>
+    </div>
+	<div class="col-md-1"></div>
+</div>

@@ -1,0 +1,53 @@
+<div class="well well-out">
+    <div class="well well-in">
+        <form method="post" action="/admin/index?admin=menu">
+            <select name="id">
+                <% if @id == 0 || @id.nil? %>
+                    <option value="0" selected>전체보기</option>
+                <% else %>
+                    <option value="0">전체보기</option>
+                <% end %>
+                <% Navbar.all.each do |x| %>
+                    <% if x.id == @id %>
+                        <option value="<%= x.id %>" selected><%= x.title %></option>
+                    <% else %>
+                        <option value="<%= x.id %>"><%= x.title %></option>
+                    <% end %>
+                <% end %>
+            </select>
+            <input type="submit" class="btn btn-orange" value="보기">
+        </form>
+        <table class="table" style="border-color: black;">
+            <thead>
+                <tr class="tr-head">
+                    <td>#</td>
+                    <td>순서</td>
+                    <td>제목</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% Menu.all.reverse.each do |post| %>
+                    <% if @id == 0 || post.navbar_id == @id %>
+                        <tr class="tr-content">
+                            <td><%= post.id %></td>
+                            <td><%= post.index %></td>
+                            <td><a href="/admin/index?admin=m_menu&id=<%= post.id %>&mod=1">
+                                <%= post.title %>
+                                <% if post.title.nil? %>
+                                    Nil
+                                <% end %>
+                            </a></td>
+                        </tr>
+                    <% end %>
+                <% end %>
+        </table>
+    </div>
+
+    <div class="row" align="right">
+        
+        <a class="btn btn-orange" href="/admin/index?admin=m_menu">등록</a>
+    
+    </div>
+
+
+</div>

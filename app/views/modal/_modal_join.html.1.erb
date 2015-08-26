@@ -1,0 +1,77 @@
+<% 
+@univ2 = Array.new
+i=0
+$univ.each do |x|
+  @univ2 << [x , i]
+  i+=1
+end
+%>
+<div class="modal fade" id="join" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #94E9FF;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Join </h4>
+      </div>
+      <div class="modal-body" style="background-color: #F8F8F8;">
+        <%= form_for @user, url: {controller: 'user', action:'join_confirm'} do |f| %>
+          <div class="form-group">
+            <%= f.label :"이름" %>
+            <%= f.text_field :user_name, autofocus: true, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"이메일" %>
+            <%= f.email_field :user_email, autofocus: true, class: "form-control" %>
+          </div>
+          <div class="form-group">
+              <%= f.label :"비밀번호" %>
+              <%= f.password_field :user_password, autofocus: true, class: "form-control" %>
+          </div>
+          <div class="form-group">
+              <%= f.label :"연락처" %>
+              <%= f.text_field :user_phone, autofocus: true, class: "form-control" %>
+          </div>
+  
+          <div class="form-group">
+              <%= f.label :"성별" %>
+              <input type="radio" name="user[user_sex]" id="user_user_sex" value="0">
+              <label for="user_user_sex">남자</label>
+              <input type="radio" name="user[user_sex]" id="user_user_sex" value="1">
+              <label for="user_user_sex">여자</label>
+          </div>
+          <div class = "control-group" >
+              <%= f.label :"소속학교" %>
+              <%= f.select(:user_univ) do %>
+                <% @univ2.each do |c| -%>
+                  <%= content_tag(:option, c.first, value: c.last) %>
+                <% end %>
+              <% end %>
+          </div>
+  
+  
+  
+          <div class ="form-group">
+            <%#= check_box_tag(:user_mailing) %>
+            <%#= label_tag (:user_mailing, "메일수신") %>
+            <input id="user_user_mailing" name="user[user_mailing]" type="checkbox" value="1" />
+            <label for="user_user_mailing">메일수신</label>
+          </div>
+          <div class ="form-group">
+            <%#= check_box_tag(:user_open) %>
+            <%#= label_tag (:user_open, "정보공개") %>
+            <input id="user_user_open" name="user[user_open]" type="checkbox" value="1" />
+            <label for="user_user_open">검색허용</label>
+          </div>
+          <div class="form-group">
+              <%= f.label :"프로필 사진" %>
+              <%= f.file_field :user_pic, autofocus: true, class: "form-control" %>
+          </div>
+      </div>
+      <div class="modal-footer" style="background-color: #94E9FF;">
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <p align="right"><%= f.submit "가입", class: "btn btn-primary" %></p>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

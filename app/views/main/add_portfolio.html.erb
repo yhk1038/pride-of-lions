@@ -1,0 +1,96 @@
+<%= render :partial => 'navbar' %>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <p id="page_title"><b>내 포트폴리오 등록하기</b></p>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+<form action="/main/add_portfolio?confirm=1" method="POST" enctype="multipart/form-data">
+    <input type="hidden" value="<%= session[:user_id] %>" name="user_id">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div>
+                <p class="addpf_guide_title"><img src="https://scontent.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/11855672_809834619133602_1708435081209254128_n.jpg?oh=b4743b85e4b3b75a86db3cabfc7e9dff&oe=563D1314" width="15%"/>
+                Project의 이미지를 등록해주세요!</p>
+                <div class="row">
+                    <div class="col-md-1 col-xs-1 paddingzero">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSPl30glenvjiUs1ClW7wgblFdI3ByXcXjn2QQi3hjEOzDgMNP5RA" width="100%"/>    
+                    </div>
+                    <div class="col-md-11 col-xs-11">
+                        <input type="file" name="myprj_each_img" class="step_form step_file">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="addpf_guide_title"><img src="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xft1/v/t1.0-9/11205087_809834639133600_3373849254633558075_n.jpg?oh=65cd82f1e01b7a47ed19618d42481c37&oe=564BB07A&__gda__=1447289840_beaf25d1ce9d9759277c80f9e7bde4e9" width="15%"/>
+                제목과 한 줄 메모를 입력하세요</p>
+                <div class="row">
+                    <div class="col-md-1 col-xs-1 paddingzero">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDR8qCQCqcWsd79ArPlNWJg8U7tmFX3pzthVGGdC9LvQnjnKYt" width="100%"/>
+                    </div>
+                    <div class="col-md-11 col-xs-11">
+                        Project 제목 : <input type="text" name="prj_title" class="step_form step_input"><br>
+                        한 줄 메모 : <input type="text" name="prj_memo"  class="step_form step_input" placeholder="Make a short description of your Project">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="addpf_guide_title"><img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/11870858_809834635800267_2179181281735682651_n.jpg?oh=1e2c51e9eb80cab94c813ec2b149756e&oe=564BEF55&__gda__=1447510748_b47082b80991e890457b6025687b8e0a" width="15%"/>
+                Project 소개글을 써보세요</p>
+                <div class="row">
+                    <div class="col-md-1 col-xs-1 paddingzero">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSPl30glenvjiUs1ClW7wgblFdI3ByXcXjn2QQi3hjEOzDgMNP5RA" width="100%"/>
+                    </div>
+                    <div class="col-md-11 col-xs-10">
+                        <textarea type="text" name="prj_content" class="step3_textarea"></textarea>
+                    </div>
+                    <div class="col-md-0 col-xs-1"></div>
+                </div>
+            </div>
+            <div>
+                <p class="addpf_guide_title"><img src="https://scontent.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/11899784_809834622466935_2530577976603183454_n.jpg?oh=8c25ea697b23ff2b4c61618ac51dd3b8&oe=564863F2" width="15%"/>
+                project의 주소를 넣어주세요</p>
+                <div class="row">
+                    <div class="col-md-1 col-xs-1 paddingzero">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSPl30glenvjiUs1ClW7wgblFdI3ByXcXjn2QQi3hjEOzDgMNP5RA" width="100%"/>
+                    </div>
+                    <div class="col-md-11 col-xs-11">
+                        <input type="text" name="prj_url" class="step_form step_input">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="addpf_guide_title"><img src="https://scontent.xx.fbcdn.net/hphotos-xpt1/v/l/t1.0-9/11870678_809834645800266_8660431549078662090_n.jpg?oh=5b74987638ae77642875c2b04e2bb5ea&oe=567EC639" width="15%"/>
+                담아두실 폴더를 설정하고 등록하기버튼을 누르면 끝!!</p>
+                <div class="row">
+                    <div class="col-md-1 col-xs-1 paddingzero">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSPl30glenvjiUs1ClW7wgblFdI3ByXcXjn2QQi3hjEOzDgMNP5RA" width="100%"/>
+                    </div>
+                    <div class="col-md-11 col-xs-11">
+                        <div class="btn-group" role="menu">
+                            신청내역: 
+                            <select name="category" id="category" title="카테고리">
+                      				<option value="0" selected="selected"> 폴더없음 </option>
+                      				<option value="1">수업과제</option>
+                      				<option value="2">내 프로젝트</option>
+                      				<option value="3">팀 프로젝트</option>
+                      		</select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_addmypf_add">
+                <input type="submit" class="btn btn-default" value="등록하기!">
+                <%#<a href="/main/add_portfolio_mysave"><center><button type="button" class="btn btn-default"><b>등록하기!</b></button></center></a>%>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</form>
+
+
+<%= render :partial => 'style/add_portfolio' %>

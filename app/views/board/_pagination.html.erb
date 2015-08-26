@@ -1,0 +1,18 @@
+<nav align="center" style="padding:0;margin:0">
+  <ul class="pagination">
+    <li>
+      <a href="/board/index?board_name=<%= @board_name %>&page=<%= @page - 1 %>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <% i = (@k - 1) / $rowsPerPage + 1 %>
+    <% 1.upto(i) do |x| %>
+        <li><a href="/board/index?board_name=<%= @board_name %>&page=<%= x %>"><%= x %></a></li>
+    <% end %>
+    <li>
+      <a href="/board/index?board_name=<%= @board_name %>&page=<%= @page + 1 %>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

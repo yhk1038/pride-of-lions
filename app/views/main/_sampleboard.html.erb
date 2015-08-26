@@ -1,0 +1,41 @@
+				<%#<b>A</b>ll <b>T</b>he <b>L</b>ion's <b>NEWS</b> %>
+				<div class="row">
+					<% AdminHome.all.each do |x| %>
+						<div class="col-md-4">
+							<h3><%= x.board_title %> | <a href="/board/index?board_name=<%= x.board_name %>&page=1">more!</a></h3>
+							<h4><%= x.board_subtitle %></h4>
+							<table class="table table-hover">
+								<tbody>
+									<tr style="font-weight:bold;">
+										<td>#</td>
+										<td>제목</td>
+										<td>작성자</td>
+										<td>조회수</td>
+									</tr>
+									<% board = Board.where(:board_name => x.board_name).take
+									
+									@max_length = x.max_length 
+									@max_post = x.board_post
+									board_name = x.board_name
+									i = 1%>
+									<% board.posts.reverse.each do |post| %>
+									<% i += 1 
+									break if i > @max_post %>
+									<tr>
+										<td><%= post.id %></td>
+										<td><a href="/board/read?id=<%= post.id %>&board_name=<%= board_name %>">
+											<% if post.post_title.length <= @max_length %>
+											<%= post.post_title %>
+											<% else %>
+											<%= post.post_title.first(@max_length) + "..." %>
+											<% end %>
+										</a></td>
+										<td><%= post.post_user_name %></td>
+										<td><%= post.post_count %></td>
+									</tr>
+									<% end %>
+								</tbody>
+							</table>
+						</div>
+					<% end %>
+				</div>

@@ -1,0 +1,90 @@
+<style>
+    .from-control{
+        background:transparent;
+        border:none;
+        
+    }
+    .panel-body{
+        background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+        border:none;
+        border-radius:100px;
+    }
+    .panel{
+        background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+        border:;
+        border-radius:100px;
+        padding-bottom : 30px;
+    }
+    .panel-heading{
+        border-radius:100px;
+        border:solid 1px black
+        
+    }
+
+
+</style>
+<%= render :partial => 'main/navbar' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="panel panel-default col-md-6 col-xs-12">
+      <div class="panel-heading">
+        <h4>쪽지확인...★</h4>
+      </div>
+      <div class="panel-body">
+        My Mail : <%= @current_user.user_email %>
+        <div class="form-group">
+          <table style="width:100%;" class="table table-hover">
+            <theadstyle="font-weight:bold;">
+              <tr>
+                <td>번호</td>
+                <td>보낸이</td>
+                <td>내용</td>
+                <td>확인여부</td>
+              </tr>
+              
+            </thead>
+            <tbody>
+            <% i = 1 %>
+            <% @msgs.each do |x| %>
+              <tr data-toggle="modal" data-target="#myModal<%= i %>">
+                <% @k = User.find(x.from_user_id) %>
+                <td><%= i %></td>
+                <td><%= @k.user_name %><%#= User.find[@k].user_name %></td>
+                
+                <td><%= x.msg_content.first(10) %>...</td>
+                <td><%= x.msg_check %></td>
+                
+              </tr>
+              <% i += 1 %>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <% i = 1 %>
+            <% @msgs.each do |x| %>
+<div class="modal fade" id="myModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <% @k = x.from_user_id %>
+        <h4 class="modal-title">From <%#= User.find[@k].user_name %></h4>
+      </div>
+      <div class="modal-body">
+        <p><%= x.msg_content %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+  
+              <% i += 1 %>
+            <% end %>
